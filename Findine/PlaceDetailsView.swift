@@ -6,21 +6,38 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PlaceDetailsView: View {
     
     var body: some View {
         VStack {
-            ImageSliderView()
-                .frame(maxWidth: .infinity, maxHeight: 210)
-            TitleView()
-            HoursView()
-            RateView()
-            MoreView()
-            MenuView()
-            PhoneView()
+            DetailsView()
+            LocationView()
+            ReviewsView()
             Spacer()
         }
+    }
+}
+
+struct DetailsView: View {
+    var body: some View {
+        ImageSliderView()
+            .frame(maxWidth: .infinity, maxHeight: 210)
+        TitleView()
+        HoursView()
+        RateView()
+        MoreView()
+        MenuView()
+        PhoneView()
+    }
+}
+
+struct LocationView: View {
+    var body: some View {
+        AddressView()
+        MapView()
+        DirectionView()
     }
 }
 
@@ -45,20 +62,20 @@ struct ImageSliderView: View {
                 ProgressView()
             case .success(let image):
                 image.resizable()
-                    .frame(maxWidth: .infinity, maxHeight: 210, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: 250, alignment: .center)
             case .failure:
                 Image(systemName: "photo")
             @unknown default:
                 EmptyView()
             }
         }
+        .ignoresSafeArea(edges: .all)
         
     }
      
 }
 
 struct TitleView: View {
-    
     var body: some View {
         HStack {
             Text("HaiDiLao Hotpot Richmond")
@@ -130,6 +147,52 @@ struct PhoneView: View {
             Spacer()
         }
         .foregroundColor(Color.gray)
+    }
+}
+
+struct AddressView: View {
+    var body: some View {
+        HStack {
+            Text("5890 No.3 Rd Room 200, Richmond, BC V6X 3P6")
+            Spacer()
+        }
+        .padding(.horizontal, 15)
+    }
+}
+
+struct MapView: View {
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    
+    var body: some View {
+        Map(coordinateRegion: $mapRegion)
+            .frame(height: 200)
+    }
+}
+
+struct DirectionView: View {
+    var body: some View {
+        Button("Get Directions", action: {
+            print("directions")
+        })
+        .padding(11)
+        .frame(maxWidth: .infinity)
+        .background(themeColor)
+        .foregroundColor(Color.white)
+        .cornerRadius(5)
+        .padding(.horizontal, 15)
+        .shadow(radius: 5)
+    }
+}
+
+struct ReviewsView: View {
+    var body: some View {
+        HStack {
+            Text("Reviews")
+                .bold()
+                .padding(.leading, 15)
+                .font(.title3)
+            Spacer()
+        }
     }
 }
 
