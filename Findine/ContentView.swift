@@ -10,27 +10,30 @@ import MapKit
 
 struct ContentView: View {
     
+    let themeColor = Color(red: 0.9647, green: 0.4235, blue: 0.2706)
+    
     var body: some View{
     
         TabView {
             FindView()
                 .tabItem() {
-                    Image(systemName: "phone.fill")
+                    Image(systemName: "house.fill")
                     Text("Home")
                 }
             BrowseView()
                 .tabItem() {
-                    Image(systemName: "phone.fill")
+                    Image(systemName: "fork.knife")
                     Text("Browse")
                 }
             SearchView()
                 .tabItem() {
-                    Image(systemName: "phone.fill")
+                    Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
             SettingsView()
                 .tabItem() {
-                    Image(systemName: "phone.fill")
+                    // systemName: gear
+                    Image(systemName: "gearshape")
                     Text("Settings")
                 }
 

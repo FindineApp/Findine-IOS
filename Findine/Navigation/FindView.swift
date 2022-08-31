@@ -8,16 +8,29 @@
 import SwiftUI
 import MapKit
 
+let themeColor = Color(red: 0.9647, green: 0.4235, blue: 0.2706)
+
 struct FindView: View {
     // Save the state of the map
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
-    let themeColor = Color(red: 0.9647, green: 0.4235, blue: 0.2706)
-    
     var body: some View {
-            
+        
+        NavigationView {
+            ZStack {
+                Map(coordinateRegion: $mapRegion)
+                NavigationLink(destination: PlaceDetailsView(), label: { FindButtonView()})
+                NavigationLink(destination: FilterView(), label: { FilterButtonView()})
+            }
+            .navigationBarHidden(true)
+        }
+        
+    }
+}
+
+struct FindButtonView: View {
+    var body: some View {
         ZStack {
-            Map(coordinateRegion: $mapRegion)
             Circle()
                 .frame(width: 175, height: 175)
                 .foregroundColor(themeColor)
@@ -26,28 +39,31 @@ struct FindView: View {
                 .bold()
                 .foregroundColor(Color.white)
                 .font(.largeTitle)
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {print("button pressed")}) {
-                        Image(systemName: "slider.horizontal.3")
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 34, height: 34, alignment: .center)
-                    }
-                    .padding(12)
-                    .background(themeColor)
-                    .foregroundColor(Color.white)
-                    .shadow(radius: 10)
-                    .cornerRadius(5)
-                    .padding(15)
-                    
-                }
-                Spacer()
-            }
-            
         }
-    
+    }
+}
+
+struct FilterButtonView: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {print("button pressed")}) {
+                    Image(systemName: "slider.horizontal.3")
+                        .renderingMode(.original)
+                        .resizable()
+                        .frame(width: 32, height: 32, alignment: .center)
+                }
+                .padding(11)
+                .background(themeColor)
+                .foregroundColor(Color.white)
+                .cornerRadius(5)
+                .padding(15)
+                .shadow(radius: 10)
+                
+            }
+            Spacer()
+        }
     }
 }
 
