@@ -78,7 +78,7 @@ struct ImageSliderView: View {
 struct TitleView: View {
     var body: some View {
         HStack {
-            Text("HaiDiLao Hotpot Richmond")
+            Text("HaiDiLao Richmond")
                 .bold()
                 .font(.title2)
                 .padding(.horizontal, 15)
@@ -92,11 +92,12 @@ struct HoursView: View {
         HStack {
             Text("Open Now")
                 .bold()
+                .font(.body)
                 .foregroundColor(themeColor)
-                .font(.headline)
                 .padding(.leading, 15)
             Text("Closes at 11:00 PM")
                 .foregroundColor(Color.gray)
+                .font(.body)
             Spacer()
         }
     }
@@ -105,12 +106,15 @@ struct HoursView: View {
 struct RateView: View {
     var body: some View {
         HStack {
-            Text("4.7")
+            Image(systemName: "star.fill")
+                .foregroundColor(Color.gray)
                 .padding(.leading, 15)
+            Text("4.7")
+                .foregroundColor(Color.gray)
             Text("672 Reviews")
+                .foregroundColor(Color.gray)
             Spacer()
         }
-        .foregroundColor(Color.gray)
     }
 }
 
@@ -124,16 +128,26 @@ struct MoreView: View {
             
         }
         .foregroundColor(Color.gray)
+        .padding(.bottom, 5)
     }
 }
 
 struct MenuView: View {
     var body: some View {
-        HStack {
-            Text("Menu: https://haidilao.com")
-                .padding(.leading, 15)
-                .foregroundColor(Color.gray)
-            Spacer()
+        VStack {
+            HStack {
+                Text("Menu")
+                    .bold()
+                    .font(.title3)
+                    .padding(.leading, 15)
+                Spacer()
+            }
+            HStack {
+                Text("Menu: https://haidilao.com")
+                    .padding(.leading, 15)
+                    .foregroundColor(Color.gray)
+                Spacer()
+            }
         }
     }
 }
@@ -147,14 +161,24 @@ struct PhoneView: View {
             Spacer()
         }
         .foregroundColor(Color.gray)
+        .padding(.bottom, 5)
     }
 }
 
 struct AddressView: View {
     var body: some View {
-        HStack {
-            Text("5890 No.3 Rd Room 200, Richmond, BC V6X 3P6")
-            Spacer()
+        VStack {
+            HStack {
+                Text("Location")
+                    .bold()
+                    .font(.title3)
+                Spacer()
+            }
+            HStack {
+                Text("5890 No.3 Rd Room 200, Richmond, BC V6X 3P6")
+                    .font(.subheadline)
+                Spacer()
+            }
         }
         .padding(.horizontal, 15)
     }

@@ -68,7 +68,6 @@
 				EB8C93BF28BF472200E7679A /* ContentView.swift */,
 				EB8C93C128BF472400E7679A /* Assets.xcassets */,
 				EB8C93C328BF472400E7679A /* Preview Content */,
-				EB8C93D628BFBCE000E7679A /* PlaceDetailsView.swift */,
 				EB8C93D828BFC15200E7679A /* FilterView.swift */,
 			);
 			path = Findine;
@@ -86,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8C93CC28BF476E00E7679A /* FindView.swift */,
+				EB8C93D628BFBCE000E7679A /* PlaceDetailsView.swift */,
 				EB8C93CF28BF478900E7679A /* BrowseView.swift */,
 				EB8C93D228BF47BB00E7679A /* SearchView.swift */,
 				EB8C93D428BF47CB00E7679A /* SettingsView.swift */,
