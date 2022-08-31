@@ -8,8 +8,6 @@
 import SwiftUI
 import MapKit
 
-let themeColor = Color(red: 0.9647, green: 0.4235, blue: 0.2706)
-
 struct FindView: View {
     // Save the state of the map
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
