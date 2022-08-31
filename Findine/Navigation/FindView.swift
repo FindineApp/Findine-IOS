@@ -13,13 +13,14 @@ struct FindView: View {
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     
     var body: some View {
-        ZStack {
-            Map(coordinateRegion: $mapRegion)
-            FindButtonView()
-                .frame(width: 175, height: 175, alignment: .center)
-                .cornerRadius(90)
-                .shadow(radius: 15)
-            FilterButtonView()
+        
+        NavigationView {
+            ZStack {
+                Map(coordinateRegion: $mapRegion)
+                NavigationLink(destination: PlaceDetailsView(), label: { FindButtonView()})
+                NavigationLink(destination: PlaceDetailsView(), label: { FilterButtonView()})
+            }
+            .navigationBarHidden(true)
         }
         
     }
@@ -27,20 +28,15 @@ struct FindView: View {
 
 struct FindButtonView: View {
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: PlaceDetailsView(), label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 175, height: 175)
-                        .foregroundColor(themeColor)
-                        .shadow(radius: 15)
-                    Text("Find")
-                        .bold()
-                        .foregroundColor(Color.white)
-                        .font(.largeTitle)
-                }
-                .navigationBarHidden(true)
-            })
+        ZStack {
+            Circle()
+                .frame(width: 175, height: 175)
+                .foregroundColor(themeColor)
+                .shadow(radius: 15)
+            Text("Find")
+                .bold()
+                .foregroundColor(Color.white)
+                .font(.largeTitle)
         }
     }
 }

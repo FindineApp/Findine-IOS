@@ -9,27 +9,28 @@ import SwiftUI
 import MapKit
 
 struct PlaceDetailsView: View {
-    
     var body: some View {
-        VStack {
-            DetailsView()
-            LocationView()
-            ReviewsView()
-            Spacer()
+        ScrollView(.vertical) {
+            VStack {
+                DetailsView()
+                LocationView()
+                ReviewsView()
+                Spacer()
+            }
         }
+        .ignoresSafeArea(edges: .top)
     }
 }
 
 struct DetailsView: View {
     var body: some View {
         ImageSliderView()
-            .frame(maxWidth: .infinity, maxHeight: 210)
+            .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
         TitleView()
         HoursView()
         RateView()
         MoreView()
         MenuView()
-        PhoneView()
     }
 }
 
@@ -60,11 +61,13 @@ struct ImageSliderView: View {
             switch phase {
             case .empty:
                 ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
             case .success(let image):
                 image.resizable()
-                    .frame(maxWidth: .infinity, maxHeight: 250, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
             case .failure:
                 Image(systemName: "photo")
+                
             @unknown default:
                 EmptyView()
             }
@@ -78,9 +81,9 @@ struct ImageSliderView: View {
 struct TitleView: View {
     var body: some View {
         HStack {
-            Text("HaiDiLao Richmond")
+            Text("HaiDiLao HotPot Richmond")
                 .bold()
-                .font(.title2)
+                .font(.title)
                 .padding(.horizontal, 15)
             Spacer()
         }
@@ -92,12 +95,12 @@ struct HoursView: View {
         HStack {
             Text("Open Now")
                 .bold()
-                .font(.body)
+                .font(.subheadline)
                 .foregroundColor(themeColor)
                 .padding(.leading, 15)
             Text("Closes at 11:00 PM")
                 .foregroundColor(Color.gray)
-                .font(.body)
+                .font(.subheadline)
             Spacer()
         }
     }
@@ -106,13 +109,13 @@ struct HoursView: View {
 struct RateView: View {
     var body: some View {
         HStack {
-            Image(systemName: "star.fill")
+            Label("4.7", systemImage: "star.fill")
                 .foregroundColor(Color.gray)
+                .font(.subheadline)
                 .padding(.leading, 15)
-            Text("4.7")
-                .foregroundColor(Color.gray)
             Text("672 Reviews")
                 .foregroundColor(Color.gray)
+                .font(.subheadline)
             Spacer()
         }
     }
@@ -123,9 +126,10 @@ struct MoreView: View {
         HStack {
             Text("$$$")
                 .padding(.leading, 15)
+                .font(.subheadline)
             Text("Chinese")
+                .font(.subheadline)
             Spacer()
-            
         }
         .foregroundColor(Color.gray)
         .padding(.bottom, 5)
@@ -134,34 +138,31 @@ struct MoreView: View {
 
 struct MenuView: View {
     var body: some View {
-        VStack {
-            HStack {
+        HStack {
+            VStack {
                 Text("Menu")
                     .bold()
                     .font(.title3)
-                    .padding(.leading, 15)
-                Spacer()
-            }
-            HStack {
-                Text("Menu: https://haidilao.com")
-                    .padding(.leading, 15)
+                    .foregroundColor(themeColor)
+                Text("Browse for your favouriate dishes")
+                    .font(.subheadline)
                     .foregroundColor(Color.gray)
-                Spacer()
             }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.vertical, 10)
+            .background(Color.orange)
+            VStack {
+                Text("Reserve")
+                    .bold()
+                    .font(.title3)
+                Text("Secure your seats\nnow!")
+                    .font(.subheadline)
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.vertical, 10)
         }
-    }
-}
-
-struct PhoneView: View {
-    var body: some View {
-        HStack {
-            Text("Reserve now:")
-                .padding(.leading, 15)
-            Text("604 368 3113")
-            Spacer()
-        }
-        .foregroundColor(Color.gray)
-        .padding(.bottom, 5)
+        .padding(.bottom, 10)
+        .padding(.horizontal, 15)
     }
 }
 
@@ -174,6 +175,7 @@ struct AddressView: View {
                     .font(.title3)
                 Spacer()
             }
+            .padding(.bottom, 1)
             HStack {
                 Text("5890 No.3 Rd Room 200, Richmond, BC V6X 3P6")
                     .font(.subheadline)
