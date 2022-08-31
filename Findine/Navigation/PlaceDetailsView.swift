@@ -138,28 +138,33 @@ struct MoreView: View {
 
 struct MenuView: View {
     var body: some View {
-        HStack {
+        VStack {
             VStack {
                 Text("Menu")
                     .bold()
                     .font(.title3)
-                    .foregroundColor(themeColor)
+                    .foregroundColor(Color.white)
                 Text("Browse for your favouriate dishes")
                     .font(.subheadline)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(Color.white)
             }
             .frame(maxWidth: .infinity, alignment: .center)
-            .padding(.vertical, 10)
-            .background(Color.orange)
+            .padding(.vertical, 20)
+            .background(themeColor)
+            .cornerRadius(20)
+            .padding(.bottom, 1)
             VStack {
                 Text("Reserve")
                     .bold()
                     .font(.title3)
-                Text("Secure your seats\nnow!")
+                Text("Secure your seats now!")
                     .font(.subheadline)
             }
             .frame(maxWidth: .infinity, alignment: .center)
-            .padding(.vertical, 10)
+            .padding(.vertical, 20)
+            .background(lightGray)
+            .cornerRadius(20)
+            .padding(.bottom, 5)
         }
         .padding(.bottom, 10)
         .padding(.horizontal, 15)

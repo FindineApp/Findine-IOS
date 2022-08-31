@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 public var themeColor = Color(red: 0.9647, green: 0.4235, blue: 0.2706)
+public var lightGray = Color(red: 0.9490, green: 0.9490, blue: 0.9490)
 
 struct ContentView: View {
     
