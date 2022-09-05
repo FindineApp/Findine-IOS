@@ -26,11 +26,13 @@ struct DetailsView: View {
     var body: some View {
         ImageSliderView()
             .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
+            .padding(.bottom, 10)
         TitleView()
+            .padding(.bottom, 15)
         HoursView()
-        RateView()
-        MoreView()
-        MenuView()
+            .padding(.bottom, 15)
+        GetReadyView()
+            .padding(.bottom, 15)
     }
 }
 
@@ -39,6 +41,7 @@ struct LocationView: View {
         AddressView()
         MapView()
         DirectionView()
+            .padding(.bottom, 15)
     }
 }
 
@@ -80,44 +83,116 @@ struct ImageSliderView: View {
 
 struct TitleView: View {
     var body: some View {
-        HStack {
+        VStack {
             Text("HaiDiLao HotPot Richmond")
                 .bold()
                 .font(.title)
                 .padding(.horizontal, 15)
-            Spacer()
+            Text("Chinese • Hotpot")
+                .font(.body)
+                .padding(.horizontal, 15)
         }
     }
 }
 
 struct HoursView: View {
     var body: some View {
-        HStack {
-            Text("Open Now")
-                .bold()
-                .font(.subheadline)
-                .foregroundColor(themeColor)
-                .padding(.leading, 15)
-            Text("Closes at 11:00 PM")
-                .foregroundColor(Color.gray)
-                .font(.subheadline)
-            Spacer()
+        HStack(alignment: .top, spacing: 30){
+            VStack {
+                Image("star")
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .shadow(radius: 3)
+                Text("4.3")
+                    .font(.subheadline)
+            }
+            VStack {
+                Image("comment")
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .shadow(radius: 3)
+                Text("345")
+                    .font(.subheadline)
+            }
+            VStack {
+                Image("money2")
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .shadow(radius: 3)
+                Text("$$$")
+                    .font(.subheadline)
+            }
+            VStack {
+                Image("clock")
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .shadow(radius: 3)
+                Text("Close at\n11:00 PM")
+                    .font(.subheadline)
+            }
         }
     }
 }
 
-struct RateView: View {
+struct GetReadyView: View {
     var body: some View {
-        HStack {
-            Label("4.7", systemImage: "star.fill")
-                .foregroundColor(Color.gray)
-                .font(.subheadline)
-                .padding(.leading, 15)
-            Text("672 Reviews")
-                .foregroundColor(Color.gray)
-                .font(.subheadline)
-            Spacer()
+        VStack {
+            HStack {
+                Text("Get Ready")
+                    .bold()
+                    .font(.title3)
+                Spacer()
+            }
+            
+            ZStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("Menu")
+                        .font(.headline)
+                    Text("Browse for your favourite dish!")
+                        .font(.subheadline)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 15)
+                .padding(.leading, 90)
+                .background(themeColor)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.top, 15)
+                HStack {
+                    Image("menu2")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .padding(.horizontal, 15)
+                    Spacer()
+                }
+            }
+            .shadow(radius: 5)
+            
+            ZStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("Reserve")
+                        .font(.headline)
+                    Text("Call to secure your spots!")
+                        .font(.subheadline)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 15)
+                .padding(.leading, 90)
+                .background(themeColor)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.top, 15)
+                HStack {
+                    Image("call")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .padding(.horizontal, 15)
+                    Spacer()
+                }
+            }
+            .shadow(radius: 5)
         }
+        .padding(.horizontal, 15)
     }
 }
 
@@ -153,18 +228,21 @@ struct MenuView: View {
             .background(themeColor)
             .cornerRadius(20)
             .padding(.bottom, 1)
+            .padding(.trailing, 30)
             VStack {
                 Text("Reserve")
                     .bold()
                     .font(.title3)
+                    .foregroundColor(Color.white)
                 Text("Secure your seats now!")
                     .font(.subheadline)
+                    .foregroundColor(Color.white)
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.vertical, 20)
-            .background(lightGray)
+            .background(secondaryColor)
             .cornerRadius(20)
-            .padding(.bottom, 5)
+            .padding(.leading, 30)
         }
         .padding(.bottom, 10)
         .padding(.horizontal, 15)
@@ -197,6 +275,8 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $mapRegion)
             .frame(height: 200)
+            .cornerRadius(10)
+            .padding(.horizontal, 15)
     }
 }
 
@@ -209,7 +289,7 @@ struct DirectionView: View {
         .frame(maxWidth: .infinity)
         .background(themeColor)
         .foregroundColor(Color.white)
-        .cornerRadius(5)
+        .cornerRadius(10)
         .padding(.horizontal, 15)
         .shadow(radius: 5)
     }
