@@ -10,8 +10,8 @@ import MapKit
 
 public var themeColor = Color(red: 0.9647, green: 0.5765, blue: 0.2902)
 public var secondaryColor = Color(red: 69/255, green: 211/255, blue: 247/255)
-public var lightGray = Color(red: 0.9490, green: 0.9490, blue: 0.9490)
-
+public var lightGray = Color(red: 237/255, green: 237/255, blue: 237/255)
+public var darkGray = Color(red: 119/255, green: 119/255, blue: 119/255)
 struct ContentView: View {
     
     var body: some View{

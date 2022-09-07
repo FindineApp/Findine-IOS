@@ -15,7 +15,7 @@ struct ReviewsView: View {
                     switch phase {
                     case .empty:
                         ProgressView()
-                            .frame(width: 60, height: 60, alignment: .center)
+                            .frame(width: 70, height: 70, alignment: .center)
                             .cornerRadius(30)
                     case .success(let image):
                         image.resizable()
@@ -31,21 +31,28 @@ struct ReviewsView: View {
                     }
                 }
                 
-                VStack {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("Peter Na")
                         .bold()
                         .font(.headline)
-                    RatingView(rating: 4.2, maxRating: 5)
-                        .frame(width: 100, height: 20, alignment: .center)
+                    RatingView(rating: .constant(4.2), maxRating: 5)
                 }
+                .padding(.horizontal, 10)
                 
                 Spacer()
                 
                 Text("A week ago")
                     .font(.subheadline)
+                    .foregroundColor(darkGray)
                 
             }
             .padding(.horizontal, 15)
+            .padding(.bottom, 10)
+            
+            Text("Great place to eat at, would come back here again")
+                .font(.subheadline)
+                .foregroundColor(darkGray)
+                .padding(.bottom, 30)
         }
     }
 }

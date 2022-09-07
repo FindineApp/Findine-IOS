@@ -9,35 +9,47 @@ import SwiftUI
 
 struct RatingView: View {
     
-    var rating: CGFloat
-    var maxRating: Int
+    struct ClipShape: Shape {
+        let width: Double
+        func path(in rect: CGRect) -> Path {
+            Path(CGRect(x: rect.minX, y: rect.minY, width: width, height: rect.height))
+        }
+    }
+
+    @Binding var rating: Double
+    let maxRating: Int
+
+    init(rating: Binding<Double>, maxRating: Int) {
+        self.maxRating = maxRating
+        self._rating = rating
+    }
 
     var body: some View {
-        let stars = HStack(spacing: 0) {
+        HStack(spacing: 0) {
             ForEach(0..<maxRating, id: \.self) { _ in
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                Text(Image(systemName: "star.fill"))
+                    .foregroundColor(lightGray)
+                    .aspectRatio(contentMode: .fill)
             }
-        }
-
-        stars.overlay(
-            GeometryReader { g in
-                let width = rating / CGFloat(maxRating) * g.size.width
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .frame(width: width)
-                        .foregroundColor(.yellow)
+        }.overlay(
+            GeometryReader { reader in
+                HStack(spacing: 0) {
+                    ForEach(0..<maxRating, id: \.self) { _ in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(themeColor)
+                            .aspectRatio(contentMode: .fit)
+                    }
                 }
+                .clipShape(
+                    ClipShape(width: (reader.size.width / CGFloat(maxRating)) * CGFloat(rating))
+                )
             }
-            .mask(stars)
         )
-        .foregroundColor(.gray)
     }
 }
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView(rating: 0.5, maxRating: 5)
+        RatingView(rating: .constant(4.5), maxRating: 5)
     }
 }
