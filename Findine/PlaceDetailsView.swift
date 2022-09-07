@@ -225,7 +225,7 @@ struct MenuView: View {
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.vertical, 20)
-            .background(themeColor)
+            .background(Color.black)
             .cornerRadius(20)
             .padding(.bottom, 1)
             .padding(.trailing, 30)
@@ -240,7 +240,7 @@ struct MenuView: View {
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.vertical, 20)
-            .background(secondaryColor)
+            .background(Color.black)
             .cornerRadius(20)
             .padding(.leading, 30)
         }
@@ -295,7 +295,7 @@ struct DirectionView: View {
     }
 }
 
-struct ReviewsView: View {
+struct ReviewsDetailView: View {
     var body: some View {
         HStack {
             Text("Reviews")
