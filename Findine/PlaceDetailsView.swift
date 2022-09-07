@@ -86,7 +86,7 @@ struct TitleView: View {
                 .padding(.horizontal, 15)
             Text("Chinese • Hotpot")
                 .font(.body)
-                .foregroundColor(darkGray)
+                .foregroundColor(Color.black)
                 .padding(.horizontal, 15)
         }
     }
