@@ -16,11 +16,11 @@ struct PlaceDetailsView: View {
                     .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
                     .padding(.bottom, 10)
                 TitleView()
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 10)
                 DetailsView()
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 20)
                 GetReadyView()
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 20)
                 LocationView()
                 ReviewsTitleView()
                 ReviewsDetailView()
@@ -37,7 +37,7 @@ struct LocationView: View {
         AddressView()
         MapView()
         DirectionView()
-            .padding(.bottom, 15)
+            .padding(.bottom, 20)
     }
 }
 
@@ -109,21 +109,47 @@ struct ImageSliderView: View {
 
 struct TitleView: View {
     var body: some View {
-        VStack {
+        HStack {
             Text("HaiDiLao HotPot Richmond")
                 .bold()
                 .font(.title)
                 .padding(.horizontal, 15)
-            Text("Chinese • Hotpot")
-                .font(.body)
-                .foregroundColor(Color.black)
-                .padding(.horizontal, 15)
+            Spacer()
         }
     }
 }
 
 struct DetailsView: View {
     var body: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            
+            HStack {
+                Text("Chinese • Hotpot")
+                    .bold()
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                Spacer()
+            }
+            
+            HStack {
+                HStack(alignment: .center, spacing: 1) {
+                    Image(systemName: "star.fill")
+                    Text("4.3")
+                }
+                Text("•")
+                Text("436 reviews")
+                Spacer()
+            }
+            .font(.subheadline)
+            
+            HStack {
+                Text("$$$")
+                Text("•")
+                Text("Closes at 11:00 PM")
+                Spacer()
+            }
+            .font(.subheadline)
+        /*
         HStack(alignment: .top, spacing: 30){
             VStack {
                 Image(systemName: "star.fill")
@@ -162,7 +188,9 @@ struct DetailsView: View {
                     .font(.subheadline)
                     .foregroundColor(darkGray)
             }
+         */
         }
+        .padding(.horizontal, 15)
     }
 }
 
@@ -191,7 +219,7 @@ struct GetReadyView: View {
                     Text("Browse for your favourite dish!")
                         .font(.subheadline)
                 }
-                .padding(.vertical, 15)
+                .padding(.vertical, 18)
                 .foregroundColor(Color.black)
                 
             }
@@ -215,7 +243,7 @@ struct GetReadyView: View {
                     Text("Call to secure your spots!")
                         .font(.subheadline)
                 }
-                .padding(.vertical, 15)
+                .padding(.vertical, 18)
                 .foregroundColor(Color.black)
                 
             }
@@ -307,7 +335,7 @@ struct SeeMoreView: View {
         .background(Color.white)
         .foregroundColor(Color.black)
         .cornerRadius(10)
-        .border(.black, width: 1)
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(.black, lineWidth: 1))
         .padding(.horizontal, 15)
     }
 }

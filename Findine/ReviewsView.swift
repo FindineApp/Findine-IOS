@@ -51,7 +51,7 @@ struct ReviewsView: View {
             
             Text("Great place to eat at, would come back here again")
                 .font(.subheadline)
-                .foregroundColor(darkGray)
+                .foregroundColor(Color.black)
                 .padding(.bottom, 30)
         }
     }
