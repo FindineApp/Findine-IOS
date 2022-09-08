@@ -56,22 +56,52 @@ struct ImageSliderView: View {
         }
         .tabViewStyle(PageTabViewStyle())
          */
-        AsyncImage(url: URL(string: "https://media-cdn.tripadvisor.com/media/photo-s/16/a5/b9/e9/photo1jpg.jpg")) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
-            case .success(let image):
-                image.resizable()
-                    .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
-            case .failure:
-                Image(systemName: "photo")
-                
-            @unknown default:
-                EmptyView()
+        ZStack {
+            AsyncImage(url: URL(string: "https://media-cdn.tripadvisor.com/media/photo-s/16/a5/b9/e9/photo1jpg.jpg")) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
+                case .success(let image):
+                    image.resizable()
+                        .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
+                case .failure:
+                    Image(systemName: "photo")
+                    
+                @unknown default:
+                    EmptyView()
+                }
             }
+            .ignoresSafeArea(edges: .all)
+            
+            HStack {
+                VStack {
+                    Spacer()
+                    AsyncImage(url: URL(string: "https://media.glassdoor.com/sqll/2163971/haidilao-hotpot-china-squarelogo-1560863363446.png")) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 75, height: 75, alignment: .center)
+                        case .success(let image):
+                            image.resizable()
+                                .frame(width: 75, height: 75, alignment: .center)
+                        case .failure:
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 75, height: 75, alignment: .center)
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    .cornerRadius(30)
+                    .shadow(radius: 5)
+                }
+                .padding(.bottom, 15)
+                Spacer()
+            }
+            .padding(.leading, 15)
         }
-        .ignoresSafeArea(edges: .all)
         
     }
      
@@ -100,30 +130,25 @@ struct DetailsView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45, height: 45, alignment: .center)
-                    .shadow(radius: 3)
                 Text("4.3")
                     .font(.subheadline)
                     .foregroundColor(darkGray)
             }
             VStack {
-                //Image("comment")
                 Image(systemName: "text.bubble.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45, height: 45, alignment: .center)
                     .scaledToFit()
-                    .shadow(radius: 3)
                 Text("345")
                     .font(.subheadline)
                     .foregroundColor(darkGray)
             }
             VStack {
-                //Image("money2")
                 Image(systemName: "creditcard.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45, height: 45, alignment: .center)
-                    .shadow(radius: 3)
                 Text("$$$")
                     .font(.subheadline)
                     .foregroundColor(darkGray)
@@ -133,7 +158,6 @@ struct DetailsView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45, height: 45, alignment: .center)
-                    .shadow(radius: 3)
                 Text("Close at\n11:00 PM")
                     .font(.subheadline)
                     .foregroundColor(darkGray)
@@ -149,58 +173,60 @@ struct GetReadyView: View {
                 Text("Get Ready")
                     .bold()
                     .font(.title3)
+                    .padding(.leading, 15)
                 Spacer()
             }
             
-            ZStack(alignment: .top) {
+            HStack(alignment: .center) {
+
+                Image("menu3")
+                    .resizable()
+                    .frame(width:60, height: 60)
+                    .cornerRadius(5)
+                    .padding(.horizontal, 15)
+
                 VStack(alignment: .leading) {
                     Text("Menu")
                         .font(.headline)
                     Text("Browse for your favourite dish!")
                         .font(.subheadline)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 15)
-                .padding(.leading, 90)
-                .background(lightGray)
                 .foregroundColor(Color.black)
-                .cornerRadius(10)
-                .padding(.top, 15)
-                HStack {
-                    Image("menu2")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .padding(.horizontal, 15)
-                    Spacer()
-                }
+                
             }
-            .shadow(radius: 5)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 15)
+            .background(lightGray)
+            .cornerRadius(10)
+            .padding(.horizontal, 15)
             
-            ZStack(alignment: .top) {
+            HStack(alignment: .center) {
+
+                Image("phone2")
+                    .resizable()
+                    .frame(width:60, height: 60)
+                    .cornerRadius(5)
+                    .padding(.horizontal, 15)
+
                 VStack(alignment: .leading) {
                     Text("Reserve")
                         .font(.headline)
                     Text("Call to secure your spots!")
                         .font(.subheadline)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 15)
-                .padding(.leading, 90)
-                .background(lightGray)
                 .foregroundColor(Color.black)
-                .cornerRadius(10)
-                .padding(.top, 15)
-                HStack {
-                    Image("call")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .padding(.horizontal, 15)
-                    Spacer()
-                }
+                
             }
-            .shadow(radius: 5)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 15)
+            .background(lightGray)
+            .cornerRadius(10)
+            .padding(.horizontal, 15)
+            
         }
-        .padding(.horizontal, 15)
+        
     }
 }
 
@@ -246,7 +272,6 @@ struct DirectionView: View {
         .foregroundColor(Color.white)
         .cornerRadius(10)
         .padding(.horizontal, 15)
-        .shadow(radius: 5)
     }
 }
 
@@ -265,7 +290,7 @@ struct ReviewsTitleView: View {
 struct ReviewsDetailView: View {
     var body: some View {
         LazyVStack {
-            ForEach(0 ... 5, id: \.self) { _ in
+            ForEach(0 ... 4, id: \.self) { _ in
                 ReviewsView()
             }
         }
@@ -279,11 +304,11 @@ struct SeeMoreView: View {
         })
         .padding(11)
         .frame(maxWidth: .infinity)
-        .background(Color.black)
-        .foregroundColor(Color.white)
+        .background(Color.white)
+        .foregroundColor(Color.black)
         .cornerRadius(10)
+        .border(.black, width: 1)
         .padding(.horizontal, 15)
-        .shadow(radius: 5)
     }
 }
 
