@@ -19,8 +19,8 @@ struct FindView: View {
             ZStack {
                 Map(coordinateRegion: $viewModel.mapRegion, showsUserLocation: true)
                     .onAppear {viewModel.checkIfLocationServicesIsEnabled()}
-                NavigationLink(destination: PlaceDetailsView(), label: { FindButtonView()})
-                NavigationLink(destination: PlaceDetailsView(), label: { FilterButtonView()})
+                NavigationLink(destination: PlaceDetailsView(), label: { FindButtonView().frame(width: 175, height: 175, alignment: .center)})
+                FilterButtonView()
             }
             .navigationBarHidden(true)
             .task {
