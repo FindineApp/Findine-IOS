@@ -36,7 +36,7 @@ struct RatingView: View {
                 HStack(spacing: 0) {
                     ForEach(0..<maxRating, id: \.self) { _ in
                         Image(systemName: "star.fill")
-                            .foregroundColor(themeColor)
+                            .foregroundColor(Color.yellow)
                             .aspectRatio(contentMode: .fit)
                     }
                 }

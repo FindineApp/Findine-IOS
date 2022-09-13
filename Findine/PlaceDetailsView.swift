@@ -149,46 +149,6 @@ struct DetailsView: View {
                 Spacer()
             }
             .font(.subheadline)
-        /*
-        HStack(alignment: .top, spacing: 30){
-            VStack {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 45, alignment: .center)
-                Text("4.3")
-                    .font(.subheadline)
-                    .foregroundColor(darkGray)
-            }
-            VStack {
-                Image(systemName: "text.bubble.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 45, alignment: .center)
-                    .scaledToFit()
-                Text("345")
-                    .font(.subheadline)
-                    .foregroundColor(darkGray)
-            }
-            VStack {
-                Image(systemName: "creditcard.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 45, alignment: .center)
-                Text("$$$")
-                    .font(.subheadline)
-                    .foregroundColor(darkGray)
-            }
-            VStack {
-                Image(systemName: "clock.badge.exclamationmark.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 45, alignment: .center)
-                Text("Close at\n11:00 PM")
-                    .font(.subheadline)
-                    .foregroundColor(darkGray)
-            }
-         */
         }
         .padding(.horizontal, 15)
     }
