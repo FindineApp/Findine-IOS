@@ -11,7 +11,8 @@ struct FilterView: View {
     var body: some View {
         VStack {
             FilterTitleView()
-            DiningTypeView()
+            FilterTypeView()
+            FilterDistanceView()
             Spacer()
         }
     }
@@ -29,7 +30,7 @@ struct FilterTitleView: View {
     }
 }
 
-struct DiningTypeView: View {
+struct FilterTypeView: View {
     var body: some View {
         VStack {
             
@@ -44,24 +45,57 @@ struct DiningTypeView: View {
                 Button(action: {print("button pressed")}) {
                     HStack {
                         Image(systemName: "fork.knife")
-                            .renderingMode(.original)
                             .resizable()
-                            .frame(width: 20, height: 30, alignment: .center)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.black)
+                            .frame(width: 20, height: 25, alignment: .center)
+                        
                         Text("Restaurant")
-                            .font(.headline)
+                            .bold()
+                            .font(.body)
                             .foregroundColor(.black)
                     }
                 }
+                .padding(10)
+                .frame(maxWidth: .infinity)
+                .background(lightGray)
+                .cornerRadius(20)
+                
                 Button(action: {print("button pressed")}) {
-                    Image(systemName: "slider.horizontal.3")
-                        .renderingMode(.original)
-                        .resizable()
-                        .frame(width: 32, height: 32, alignment: .center)
+                    HStack {
+                        Image(systemName: "cup.and.saucer.fill")
+                            .resizable()
+                            .foregroundColor(Color.black)
+                            .frame(width: 25, height: 20, alignment: .center)
+                        
+                        Text("Cafe")
+                            .bold()
+                            .font(.body)
+                            .foregroundColor(.black)
+                    }
                 }
+                .padding(10)
+                .frame(maxWidth: .infinity)
+                .background(lightGray)
+                .cornerRadius(20)
             }
             
         }
+        .padding(15)
+    }
+}
+
+struct FilterDistanceView: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Distance")
+                    .bold()
+                    .font(.title3)
+                Spacer()
+            }
+            
+        }
+        .padding(15)
     }
 }
 
