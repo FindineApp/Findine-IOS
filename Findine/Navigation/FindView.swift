@@ -5,13 +5,12 @@
 //  Created by Peter Na on 2022-08-31.
 //
 
-import Foundation
 import SwiftUI
 import MapKit
 
 struct FindView: View {
     // Save the state of the map
-    @StateObject private var viewModel = FindViewModel()
+    @StateObject private var viewModel = MapViewModel()
     
     var body: some View {
         
@@ -89,7 +88,7 @@ final class FindViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             locationManager!.delegate = self
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         } else {
-            
+            print("show an alert letting them know this is off and I am going to turn it on")
         }
     }
     

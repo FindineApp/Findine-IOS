@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct FilterView: View {
     var body: some View {
@@ -48,6 +49,7 @@ struct FilterTypeView: View {
                             .resizable()
                             .foregroundColor(Color.black)
                             .frame(width: 20, height: 25, alignment: .center)
+                            .padding(.trailing, 3)
                         
                         Text("Restaurant")
                             .bold()
@@ -66,6 +68,7 @@ struct FilterTypeView: View {
                             .resizable()
                             .foregroundColor(Color.black)
                             .frame(width: 25, height: 20, alignment: .center)
+                            .padding(.trailing, 3)
                         
                         Text("Cafe")
                             .bold()
@@ -85,6 +88,9 @@ struct FilterTypeView: View {
 }
 
 struct FilterDistanceView: View {
+    
+    @StateObject private var viewModel = MapViewModel()
+    
     var body: some View {
         VStack {
             HStack {
@@ -93,6 +99,10 @@ struct FilterDistanceView: View {
                     .font(.title3)
                 Spacer()
             }
+            
+            Map(coordinateRegion: $viewModel.mapRegion, showsUserLocation: true)
+                .frame(maxWidth: .infinity, maxHeight: 240)
+                .onAppear {viewModel.checkIfLocationServicesIsEnabled()}
             
         }
         .padding(15)

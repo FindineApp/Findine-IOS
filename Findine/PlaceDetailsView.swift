@@ -16,7 +16,7 @@ struct PlaceDetailsView: View {
                     .frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
                     .padding(.bottom, 10)
                 TitleView()
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 1)
                 DetailsView()
                     .padding(.bottom, 20)
                 GetReadyView()
@@ -97,7 +97,7 @@ struct ImageSliderView: View {
                     .cornerRadius(30)
                     .shadow(radius: 5)
                 }
-                .padding(.bottom, 15)
+                .padding(.bottom, 25)
                 Spacer()
             }
             .padding(.leading, 15)
