@@ -102,8 +102,13 @@ struct FilterDistanceView: View {
             
             Map(coordinateRegion: $viewModel.mapRegion, showsUserLocation: true)
                 .frame(maxWidth: .infinity, maxHeight: 240)
+                .cornerRadius(20)
                 .onAppear {viewModel.checkIfLocationServicesIsEnabled()}
             
+            HStack {
+                Spacer()
+                Text("500 m")
+            }
         }
         .padding(15)
     }
