@@ -9,11 +9,15 @@ import SwiftUI
 
 struct BrowseView: View {
     var body: some View {
-        BrowseHeaderView()
-        LazyVStack {
-            ForEach(0 ... 4, id: \.self) { _ in
-                ReviewsView()
+        VStack {
+            BrowseHeaderView()
+                .padding(.bottom, 15)
+            LazyVStack {
+                ForEach(0 ... 2, id: \.self) { _ in
+                    ReviewsView()
+                }
             }
+            Spacer()
         }
     }
 }
