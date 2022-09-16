@@ -11,10 +11,10 @@ struct BrowseView: View {
     var body: some View {
         VStack {
             BrowseHeaderView()
-                .padding(.bottom, 15)
+                .padding(.bottom, 5)
             LazyVStack {
                 ForEach(0 ... 2, id: \.self) { _ in
-                    ReviewsView()
+                    PlacesView()
                 }
             }
             Spacer()
