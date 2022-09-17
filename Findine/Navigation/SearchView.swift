@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @State private var searchText = ""
+    
     var body: some View {
-        Text("search ")
+        NavigationView {
+            VStack {
+                Text("Search")
+                    .searchable(text: $searchText, prompt:"eg. Korean, Italian, Pizza")
+                Spacer()
+            }
+            .navigationBarHidden(true)
+        }
     }
 }
 

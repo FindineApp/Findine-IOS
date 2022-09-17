@@ -9,15 +9,17 @@ import SwiftUI
 
 struct BrowseView: View {
     var body: some View {
-        VStack {
-            BrowseHeaderView()
-                .padding(.bottom, 5)
-            LazyVStack {
-                ForEach(0 ... 2, id: \.self) { _ in
-                    PlacesView()
+        ScrollView(.vertical) {
+            VStack {
+                BrowseHeaderView()
+                    .padding(.bottom, 5)
+                LazyVStack {
+                    ForEach(0 ... 5, id: \.self) { _ in
+                        PlacesView()
+                    }
                 }
+                Spacer()
             }
-            Spacer()
         }
     }
 }
@@ -27,11 +29,12 @@ struct BrowseHeaderView: View {
         VStack {
             Text("Browse")
                 .bold()
-                .font(.title2)
+                .font(.title3)
             
             HStack {
                 Text("45 Places Nearby")
-                    .font(.headline)
+                    .bold()
+                    .font(.subheadline)
                 
                 Spacer()
                 
@@ -39,7 +42,7 @@ struct BrowseHeaderView: View {
                     Image(systemName: "slider.horizontal.3")
                         .renderingMode(.original)
                         .resizable()
-                        .frame(width: 22, height: 22, alignment: .center)
+                        .frame(width: 20, height: 20, alignment: .center)
                 }
                 .padding(9)
                 .background(lightGray)
@@ -50,12 +53,12 @@ struct BrowseHeaderView: View {
                     HStack(spacing: 5) {
                         Text("Sort By")
                             .bold()
-                            .font(.subheadline)
+                            .font(.footnote)
                             .foregroundColor(Color.black)
                         Image(systemName: "arrow.down")
                             .foregroundColor(Color.black)
                     }
-                    .padding(10)
+                    .padding(9)
                     .background(lightGray)
                     .cornerRadius(20)
                 }

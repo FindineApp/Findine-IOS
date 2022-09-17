@@ -30,7 +30,7 @@ struct PlacesView: View {
                     }
                 }
                 .cornerRadius(5)
-                .padding(.bottom, 10)
+                .padding(.bottom, 5)
             
                 VStack {
                     Spacer()
@@ -66,26 +66,28 @@ struct PlacesView: View {
             HStack(spacing: 10) {
                 Text("HaiDiLao HotPot Richmond")
                     .bold()
-                    .font(.title3)
+                    .font(.headline)
                 Spacer()
                 Text("700 m")
-                    .font(.subheadline)
+                    .font(.footnote)
             }
             
-            HStack(spacing: 1) {
+            HStack(alignment: .center, spacing: 1) {
                 Image(systemName: "star.fill")
+                    .resizable()
+                    .frame(width: 11, height: 11)
                 Text("4.5")
-                    .font(.subheadline)
+                    .font(.footnote)
                     .padding(.trailing, 5)
                 Text("(453)")
-                    .font(.subheadline)
+                    .font(.footnote)
                 Spacer()
                 Text("Chinese • Hotpot")
-                    .font(.subheadline)
+                    .font(.footnote)
             }
         }
         .padding(.horizontal, 15)
-        .padding(.bottom, 20)
+        .padding(.bottom, 15)
     }
 }
 
