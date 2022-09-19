@@ -10,15 +10,36 @@ import SwiftUI
 struct SearchView: View {
     
     @State private var searchText = ""
+    @State private var showCancelButton: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
                 Text("Search")
-                    .searchable(text: $searchText, prompt:"eg. Korean, Italian, Pizza")
+                    .bold()
+                    .font(.title2)
+                
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    
+                    TextField("eg. Korean, Italian, burgers", text: $searchText, onEditingChanged: { isEditing in self.showCancelButton = true }, onCommit: {
+                            print("onCommit")
+                    }).foregroundColor(Color.gray)
+                    
+                    Button(action: {
+                        self.searchText = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                    }
+                }
+                .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
+                .background(lightGray)
+                .cornerRadius(30)
                 Spacer()
             }
+            .padding(.horizontal, 15)
             .navigationBarHidden(true)
+            
         }
     }
 }
