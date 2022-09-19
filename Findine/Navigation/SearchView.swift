@@ -14,39 +14,52 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Search")
-                    .bold()
-                    .font(.title2)
-                
-                HStack {
-                    Image(systemName: "magnifyingglass")
+            ScrollView {
+                VStack {
+                    Text("Search")
+                        .bold()
+                        .font(.title2)
                     
-                    TextField("eg. Korean, Italian, burgers", text: $searchText, onEditingChanged: { isEditing in self.showCancelButton = true }, onCommit: {
-                            print("onCommit")
-                    }).foregroundColor(Color.gray)
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        
+                        TextField("eg. Korean, Italian, burgers", text: $searchText, onEditingChanged: {
+                            isEditing in self.showCancelButton = true
+                        }, onCommit: {
+                                print("onCommit")
+                        }).foregroundColor(Color.black)
+                        
+                        Button(action: {
+                            self.searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                                .foregroundColor(Color.gray)
+                        }
+                    }
+                    .padding(EdgeInsets(top: 14, leading: 15, bottom: 14, trailing: 15))
+                    .foregroundColor(Color.black)
+                    .background(lightGray)
+                    .cornerRadius(30)
+                    .padding(.bottom, 15)
                     
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                    if showCancelButton {
+                        Button("Cancel") {
+                            self.searchText = ""
+                            self.showCancelButton = false
+                        }
                     }
-                }
-                .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
-                .background(lightGray)
-                .cornerRadius(30)
-                .padding(.bottom, 15)
-                
-                LazyVStack {
-                    ForEach(0 ... 12, id: \.self) { _ in
-                        SearchElementView()
+                    
+                    LazyVStack {
+                        ForEach(0 ... 12, id: \.self) { _ in
+                            SearchElementView()
+                        }
                     }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding(.horizontal, 15)
+                .navigationBarHidden(true)
             }
-            .padding(.horizontal, 15)
-            .navigationBarHidden(true)
         }
     }
 }

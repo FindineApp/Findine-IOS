@@ -12,14 +12,14 @@ struct SearchElementView: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .padding(7)
+                .padding(10)
                 .background(lightGray)
                 .cornerRadius(20)
             Text("Hotpot")
-                .font(.subheadline)
+                .font(.callout)
             Spacer()
         }
-        .padding(.bottom, 5)
+        .padding(.bottom, 10)
         
     }
 }
