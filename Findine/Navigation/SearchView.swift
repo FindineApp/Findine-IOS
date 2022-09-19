@@ -35,11 +35,18 @@ struct SearchView: View {
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
                 .background(lightGray)
                 .cornerRadius(30)
+                .padding(.bottom, 15)
+                
+                LazyVStack {
+                    ForEach(0 ... 12, id: \.self) { _ in
+                        SearchElementView()
+                    }
+                }
+                
                 Spacer()
             }
             .padding(.horizontal, 15)
             .navigationBarHidden(true)
-            
         }
     }
 }

@@ -21,6 +21,7 @@
 		EB9A06EF28C867110028AF02 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A06EE28C867110028AF02 /* RatingView.swift */; };
 		EBA1FC5C28D2B6FE00C72299 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1FC5B28D2B6FE00C72299 /* MapViewModel.swift */; };
 		EBA1FC5E28D40A7900C72299 /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1FC5D28D40A7900C72299 /* PlacesView.swift */; };
+		EBA1FC6028D8271E00C72299 /* SearchElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1FC5F28D8271E00C72299 /* SearchElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		EB9A06EE28C867110028AF02 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EBA1FC5B28D2B6FE00C72299 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EBA1FC5D28D40A7900C72299 /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
+		EBA1FC5F28D8271E00C72299 /* SearchElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				EB9A06EE28C867110028AF02 /* RatingView.swift */,
 				EBA1FC5B28D2B6FE00C72299 /* MapViewModel.swift */,
 				EBA1FC5D28D40A7900C72299 /* PlacesView.swift */,
+				EBA1FC5F28D8271E00C72299 /* SearchElementView.swift */,
 			);
 			path = Findine;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			files = (
 				EB9A06ED28C863B80028AF02 /* ReviewsView.swift in Sources */,
 				EB8C93D728BFBCE000E7679A /* PlaceDetailsView.swift in Sources */,
+				EBA1FC6028D8271E00C72299 /* SearchElementView.swift in Sources */,
 				EB8C93D328BF47BB00E7679A /* SearchView.swift in Sources */,
 				EB9A06EF28C867110028AF02 /* RatingView.swift in Sources */,
 				EB8C93D028BF478900E7679A /* BrowseView.swift in Sources */,
